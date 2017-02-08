@@ -24,6 +24,10 @@ public class NewServlet extends HttpServlet {
        // processRequest(request, response);
     }
 
+    protected String redirectionPage(){
+        return "index.jsp";
+    }
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -36,14 +40,15 @@ public class NewServlet extends HttpServlet {
 
         if (result != null) {
             request.setAttribute("result", result);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher(redirectionPage());
             dispatcher.forward(request, response);
         } else {
-            response.sendRedirect("index.jsp");
+            response.sendRedirect(redirectionPage());
         }
     }
-@Override
-        public String getServletInfo() {
+
+    @Override
+    public String getServletInfo() {
         return "Short description";
-    }// </editor-fold>
+    }
 }
