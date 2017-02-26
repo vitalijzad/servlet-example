@@ -16,5 +16,6 @@
             </table>
              <h2>${result}</h2>
         </form>
+        <a href="indexBootstrap.jsp">Bootstrap version</a>
     </body>
 </html>

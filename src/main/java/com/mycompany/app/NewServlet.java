@@ -35,6 +35,13 @@ public class NewServlet extends HttpServlet {
         String weight = request.getParameter("weight");
         String height = request.getParameter("height");
         
+        if(weight == null || weight.isEmpty() || height == null || height.isEmpty()){
+        	request.setAttribute("result", "Please specify weight and height.");
+        	RequestDispatcher dispatcher = request.getRequestDispatcher(redirectionPage());
+            dispatcher.forward(request, response);
+        	return;
+        }
+        
         BodyMassIndex b = new BodyMassIndex();
         Double result = b.calculateBMI(Double.parseDouble(weight), Double.parseDouble(height));
 
